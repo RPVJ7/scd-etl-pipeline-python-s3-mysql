@@ -64,7 +64,22 @@ Each order contains:
 
 ## How to Run
 
-1. Ensure AWS credentials are configured securely and upload the files (orders_ETL.json, orders_ETL_incremental.json) into a folder called **etl_pipeline** in a S3 bucket with a structure etl_pipeline --> yyyymmdd
+1.Upload ETL Files to S3
+
+Before proceeding, ensure that your AWS credentials are configured securely, either through environment variables, AWS CLI configuration, or an IAM role (if running on AWS infrastructure).
+
+Upload the following files to an S3 bucket under the path etl_pipeline/yyyyMMdd:
+
+orders_ETL.json
+
+orders_ETL_incremental.json
+
+The expected folder structure in the S3 bucket should be:
+
+s3://<your-bucket-name>/etl_pipeline/yyyyMMdd/
+    ├── orders_ETL.json
+    └── orders_ETL_incremental.json
+
 2. Ensure MySQL schema and tables (customers1, products1, orders1) are created in a database called 'Python'
 3. Run the script or notebook containing the main function: **scd_etl_pipeline.ipynb**
 
